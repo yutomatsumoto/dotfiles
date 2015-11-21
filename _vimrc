@@ -6,13 +6,15 @@ set laststatus=2
 set title
 set autoindent
 set ts=2 sw=2 sts=0
-"set list
 set showmatch
 set smartindent
 set title
 set cursorline
 set clipboard=unnamed,autoselect
 set imdisable
+
+" ステータス行に現在のgitブランチを表示する
+"set statusline+=%{fugitive#statusline()}
 
 if has('persistent_undo')
     set undofile
@@ -42,15 +44,35 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'mattn/emmet-vim'
 "作業ログ収集
 NeoBundle 'wakatime/vim-wakatime'
-"fileをツリー表示
-"NeoBundle 'scrooloose/nerdtree'
 "vimのインデントに色をつける
 NeoBundle 'nathanaelkane/vim-indent-guides'
 "vimのコピペがオートインデントされるのを修正
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+" Gitを便利に使う
+NeoBundle 'tpope/vim-fugitive'
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundleLazy 'tpope/vim-endwise', {
+  \ 'autoload' : { 'insert' : 1,}}
+
+NeoBundle 'stephpy/vim-php-cs-fixer'
 
 call neobundle#end()
+
+"PHPの自動整形
+nnoremap P :call PhpCsFixerFixFile()<CR>
+let g:php_cs_fixer_path = "/usr/local/Cellar/php-cs-fixer/1.10/php-cs-fixer" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_level = "symfony"              " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, 
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
@@ -62,9 +84,8 @@ filetype plugin indent on
 
 colorscheme molokai
 
-"emmetの設定
+"emmetの設定junegunn/vim-easy-alignjunegunn/vim-easy-align
 let g:user_emmet_leader_key = '<c-e>'
-
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -74,20 +95,20 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup                    = 0
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup        = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_smart_case        = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_syntax_length        = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+      \ 'default':  '',
+      \ 'vimshell': $HOME.'/.vimshell_hist',
+      \ 'scheme':  $HOME.'/.gosh_completions'
+      \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -215,5 +236,67 @@ nnoremap sp gT
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sT :<C-u>Unite tab<CR>
 
+"vimfilerの設定
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
+
+"以下ステータスラインをカスタマイズ
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'mode_map': {'c': 'NORMAL'},
+      \ 'active': {
+      \   'left': [ ['mode', 'paste'], ['fugitive', 'filename'] ]
+      \ },
+      \ 'component': {
+      \   'lineinfo': '%3l:%-2v',
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \ }
+      \ }
+
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyFilename()
+  return (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
