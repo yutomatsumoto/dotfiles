@@ -6,7 +6,7 @@ set laststatus=2
 set title
 set autoindent
 set ts=2 sw=2 sts=0
-set list
+"set list
 set showmatch
 set smartindent
 set title
@@ -33,7 +33,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 " インストールするプラグインをここに記述
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'tomasr/molokai'
 "自動補完機能系
 NeoBundle 'Shougo/neocomplcache'
@@ -44,11 +43,12 @@ NeoBundle 'mattn/emmet-vim'
 "作業ログ収集
 NeoBundle 'wakatime/vim-wakatime'
 "fileをツリー表示
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 "vimのインデントに色をつける
 NeoBundle 'nathanaelkane/vim-indent-guides'
 "vimのコピペがオートインデントされるのを修正
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'Shougo/vimfiler'
 
 call neobundle#end()
 
@@ -114,7 +114,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -194,3 +193,27 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
+"タブやウインドウ分割の設定
+""""""""""""""""""""""""""""""
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap s <Nop>
+nnoremap S :e.<CR>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sq :<C-u>q<CR>
+nnoremap sn gt
+nnoremap sp gT
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
