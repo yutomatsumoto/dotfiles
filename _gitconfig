@@ -1,0 +1,3 @@
+[core]
+	excludesfile = /Users/mazinai_tarazu/.gitignore_global
+	editor = /usr/bin/vim
