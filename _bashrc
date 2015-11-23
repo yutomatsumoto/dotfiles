@@ -7,7 +7,7 @@ fi
 
 alias ll='ls -la'
 
-#alias vi='vim'
+alias vi='vim'
 
 alias ga='git add -A'
 alias gc='git commit -a'
