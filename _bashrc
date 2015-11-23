@@ -1,0 +1,18 @@
+source ~/.git-completion.bash
+
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+alias ll='ls -la'
+
+#alias vi='vim'
+
+alias ga='git add -A'
+alias gc='git commit -a'
+alias gb='git branch'
+alias gch='git checkout'
+alias gs='git status'
+alias gpo='git pull origin'
+alias gps='git push origin'
