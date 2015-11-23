@@ -13,17 +13,12 @@ set cursorline
 set clipboard=unnamed,autoselect
 set imdisable
 
-" ステータス行に現在のgitブランチを表示する
-"set statusline+=%{fugitive#statusline()}
-
 if has('persistent_undo')
     set undofile
       set undodir=./.vimundo,~/.vim/undo
     endif
 
-"set paste
 syntax enable
-
 
 if has('vim_starting')
    " 初回起動時のみruntimepathにneobundleのパスを指定する
@@ -55,22 +50,25 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'tpope/vim-fugitive'
 " コメントON/OFFを手軽に実行
 NeoBundle 'tomtom/tcomment_vim'
+"下にあるバーを修飾
 NeoBundle 'itchyny/lightline.vim'
+"コードを自動で閉じてくれる
 NeoBundle 'Townk/vim-autoclose'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
-
+"PHPをPCRで自動整形
 NeoBundle 'stephpy/vim-php-cs-fixer'
-
-NeoBundle 'szw/vim-tags'
-
-"NeoBundle '5t111111/alt-gtags.vim'
+"ctagsのタグファイル生成をファイル保存時に自動実行できる
+NeoBundle 'soramugi/auto-ctags.vim'
 
 call neobundle#end()
 
 "ctagsの設定
-let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
-let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+set tags+=.git/tags
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+nnoremap <C-b> g<C-]> 
 
 "PHPの自動整形
 nnoremap P :call PhpCsFixerFixFile()<CR>
