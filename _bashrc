@@ -18,3 +18,11 @@ alias gch='git checkout'
 alias gs='git status'
 alias gpo='git pull origin'
 alias gps='git push origin'
+
+if [ "$(uname)" = 'Darwin' ]; then
+    export LSCOLORS=xdfxcxdxbxegedabagacad
+    alias ls='ls -G'
+else
+    eval `dircolors ~/.colorrc`
+    alias ls='ls --color=auto'
+fi

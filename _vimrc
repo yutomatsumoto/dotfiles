@@ -12,6 +12,11 @@ set title
 set cursorline
 set clipboard=unnamed,autoselect
 set imdisable
+set backspace=indent,eol,start
+set nobackup
+set nowrapscan
+set list  " 不可視文字を表示する
+set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
 
 if has('persistent_undo')
     set undofile
@@ -44,7 +49,13 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 "vimのコピペがオートインデントされるのを修正
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc',{'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },}
 NeoBundle 'Shougo/vimshell'
 " Gitを便利に使う
 NeoBundle 'tpope/vim-fugitive'
