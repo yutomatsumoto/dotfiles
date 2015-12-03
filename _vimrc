@@ -18,6 +18,10 @@ set nowrapscan
 set list  " 不可視文字を表示する
 set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
 
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+
 if has('persistent_undo')
     set undofile
       set undodir=./.vimundo,~/.vim/undo
