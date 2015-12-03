@@ -36,7 +36,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tomasr/molokai'
 "自動補完機能系
-"NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -46,6 +45,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'wakatime/vim-wakatime'
 "vimのインデントに色をつける
 NeoBundle 'nathanaelkane/vim-indent-guides'
+
 "vimのコピペがオートインデントされるのを修正
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'Shougo/vimfiler'
@@ -72,7 +72,14 @@ NeoBundle 'stephpy/vim-php-cs-fixer'
 "ctagsのタグファイル生成をファイル保存時に自動実行できる
 NeoBundle 'soramugi/auto-ctags.vim'
 
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'jceb/vim-hier'
+
 call neobundle#end()
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_check_on_wq = 0
 
 "ctagsの設定
 let g:auto_ctags = 1
