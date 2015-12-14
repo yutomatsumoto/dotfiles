@@ -17,10 +17,14 @@ set nobackup
 set nowrapscan
 set list  " 不可視文字を表示する
 set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
+set noswapfile
 
 nnoremap x "_x
 nnoremap d "_d
 nnoremap D "_D
+nnoremap D "_D
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
 
 if has('persistent_undo')
     set undofile
@@ -78,6 +82,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'jceb/vim-hier'
+NeoBundle 'rking/ag.vim'
 
 call neobundle#end()
 
@@ -92,12 +97,33 @@ set tags+=.git/tags
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 nnoremap <C-b> g<C-]> 
 
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
 "PHPの自動整形
 nnoremap P :call PhpCsFixerFixFile()<CR>
 let g:php_cs_fixer_path = "/usr/local/Cellar/php-cs-fixer/1.10/php-cs-fixer" " define the path to the php-cs-fixer.phar
 let g:php_cs_fixer_level = "symfony"              " which level ?
 let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_php_path = "php"              " Path to PHP
 let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, 
