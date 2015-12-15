@@ -23,7 +23,7 @@ set ignorecase
 set hlsearch
 
 noremap  x "_x
-noremap d "_d
+nnoremap d "_d
 noremap D "_D
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
