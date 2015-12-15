@@ -18,13 +18,15 @@ set nowrapscan
 set list  " 不可視文字を表示する
 set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
 set noswapfile
+set wrapscan
+set ignorecase
+set hlsearch
 
-nnoremap x "_x
-nnoremap d "_d
-nnoremap D "_D
-nnoremap D "_D
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-u>
+noremap  x "_x
+noremap d "_d
+noremap D "_D
+noremap <C-j> <C-d>
+noremap <C-k> <C-u>
 
 if has('persistent_undo')
     set undofile
@@ -83,6 +85,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'ujihisa/neco-look'
 
 call neobundle#end()
 
@@ -168,7 +171,23 @@ if neobundle#tap('neocomplete')
   let g:neocomplete#enable_auto_close_preview = 0
 
   let g:neocomplete#max_keyword_width = 10000
-
+  
+  " 
+  if !exists('g:neocomplete#text_mode_filetypes')
+        let g:neocomplete#text_mode_filetypes = {}
+  endif
+  let g:neocomplete#text_mode_filetypes = {
+              \ 'rst': 1,
+              \ 'php': 1,
+              \ 'markdown': 1,
+              \ 'gitrebase': 1,
+              \ 'gitcommit': 1,
+              \ 'vcs-commit': 1,
+              \ 'hybrid': 1,
+              \ 'text': 1,
+              \ 'help': 1,
+              \ 'tex': 1,
+              \ }
 
   if !exists('g:neocomplete#delimiter_patterns')
     let g:neocomplete#delimiter_patterns= {}
@@ -288,6 +307,7 @@ nnoremap sn gt
 nnoremap sp gT
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sT :<C-u>Unite tab<CR>
+nnoremap sz <C-^>
 
 "vimfilerの設定
 let g:vimfiler_as_default_explorer = 1
