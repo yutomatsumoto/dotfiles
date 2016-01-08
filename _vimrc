@@ -86,7 +86,7 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ujihisa/neco-look'
-
+NeoBundleLazy 'OrangeT/vim-csharp', { 'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] } }
 call neobundle#end()
 
 let g:syntastic_enable_signs=1
