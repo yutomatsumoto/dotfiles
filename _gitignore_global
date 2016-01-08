@@ -3,3 +3,14 @@
 node_modules/
 bower_components/
 ctags
+Library
+Temp
+Build
+Obj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
+*.swp
+*.csproj
+
