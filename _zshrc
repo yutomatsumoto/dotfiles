@@ -176,4 +176,11 @@ case ${OSTYPE} in
         ;;
 esac
 
+if [ "$(uname)" = 'Darwin' ]; then
+    export LSCOLORS=xdfxcxdxbxegedabagacad
+    alias ls='ls -G'
+else
+    eval `dircolors ~/.colorrc`
+    alias ls='ls --color=auto'
+fi
 # vim:set ft=zsh:
