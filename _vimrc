@@ -28,6 +28,11 @@ noremap D "_D
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
 
+"ファイルがC＃の時はタブ文字を使用する
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.cs setlocal noexpandtab
+augroup END
 if has('persistent_undo')
     set undofile
       set undodir=./.vimundo,~/.vim/undo
