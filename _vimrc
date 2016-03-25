@@ -1,3 +1,6 @@
+""""""""""""""""""""""""""""""
+" 基本設定系
+""""""""""""""""""""""""""""""
 set number
 set mouse=a
 set nocompatible
@@ -22,11 +25,33 @@ set wrapscan
 set ignorecase
 set hlsearch
 
+"削除でヤンクしない
 noremap  x "_x
 nnoremap d "_d
 noremap D "_D
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
+
+"タブやウインドウ分割の設定
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap s <Nop>
+nnoremap S :e.<CR>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sq :<C-u>q<CR>
+nnoremap sw :<C-u>w<CR>
+nnoremap sn gt
+nnoremap sp gT
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap sz <C-^>
 
 "ファイルがC＃の時はタブ文字を使用する
 augroup fileTypeIndent
@@ -40,59 +65,46 @@ if has('persistent_undo')
 
 syntax enable
 
-if has('vim_starting')
-   " 初回起動時のみruntimepathにneobundleのパスを指定する
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+""""""""""""""""""""""""""""""
+" dein.vim
+""""""""""""""""""""""""""""""
+
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_dir = expand('~/.cache/dein')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-" NeoBundleを初期化
-call neobundle#begin(expand('~/.vim/bundle/'))
 
-" インストールするプラグインをここに記述
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tomasr/molokai'
-"自動補完機能系
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-"emmet
-NeoBundle 'mattn/emmet-vim'
-"作業ログ収集
-NeoBundle 'wakatime/vim-wakatime'
-"vimのインデントに色をつける
-NeoBundle 'nathanaelkane/vim-indent-guides'
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-"vimのコピペがオートインデントされるのを修正
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc',{'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },}
-NeoBundle 'Shougo/vimshell'
-" Gitを便利に使う
-NeoBundle 'tpope/vim-fugitive'
-" コメントON/OFFを手軽に実行
-NeoBundle 'tomtom/tcomment_vim'
-"下にあるバーを修飾
-NeoBundle 'itchyny/lightline.vim'
-"コードを自動で閉じてくれる
-NeoBundle 'Townk/vim-autoclose'
-NeoBundleLazy 'tpope/vim-endwise', {
-  \ 'autoload' : { 'insert' : 1,}}
-"PHPをPCRで自動整形
-NeoBundle 'stephpy/vim-php-cs-fixer'
-"ctagsのタグファイル生成をファイル保存時に自動実行できる
-NeoBundle 'soramugi/auto-ctags.vim'
+  " プラグインリストを収めた TOML ファイル
+  let s:toml      = '~/.vim/rc/dein.toml'
 
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'jceb/vim-hier'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'ujihisa/neco-look'
-NeoBundleLazy 'OrangeT/vim-csharp', { 'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] } }
-call neobundle#end()
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+
+  " 設定終了
+  call dein#end()
+  call dein#save_state()
+endif
+
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Dictionary
 let $VIMHOME = $HOME . '/.vim'
@@ -103,7 +115,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 
 "syntasticの設定
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -152,12 +164,9 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 
-"NeoBundleCheck を走らせ起動時に未インストールプラグインをインストールする
-NeoBundleCheck
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 
-colorscheme molokai
 
 "emmetの設定junegunn/vim-easy-alignjunegunn/vim-easy-align
 let g:user_emmet_leader_key = '<C-e>'
@@ -167,10 +176,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 """"""""""""""""""""""""""""""""""""
 "こっから補完の設定
 """""""""""""""""""""""""""""""""""
-if neobundle#tap('neocomplete')
-  call neobundle#config({
-  \   'depends': ['Shougo/context_filetype.vim', 'ujihisa/neco-look', 'pocke/neco-gh-issues', 'Shougo/neco-syntax'],
-  \ })
 
   " 起動時に有効化
   let g:neocomplete#enable_at_startup = 1
@@ -234,11 +239,6 @@ if neobundle#tap('neocomplete')
     \ }
   endif
   let g:neocomplete#data_directory = $HOME . '/.vim/cache/neocomplete'
-
-  call neocomplete#custom#source('look', 'min_pattern_length', 1)
-
-  call neobundle#untap()
-endif
 
 
 """"""""""""""""""""""""""""""
@@ -304,30 +304,6 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-"タブやウインドウ分割の設定
-""""""""""""""""""""""""""""""
-nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
-nnoremap s <Nop>
-nnoremap S :e.<CR>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap sq :<C-u>q<CR>
-nnoremap sw :<C-u>w<CR>
-nnoremap sn gt
-nnoremap sp gT
-nnoremap st :<C-u>tabnew<CR>
-nnoremap sT :<C-u>Unite tab<CR>
-nnoremap sz <C-^>
-
 "vimfilerの設定
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
@@ -392,3 +368,5 @@ function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+" カラースキーマの設定
+colorscheme molokai
