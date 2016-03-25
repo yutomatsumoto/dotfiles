@@ -142,7 +142,7 @@ filetype plugin indent on
 colorscheme molokai
 
 "emmetの設定junegunn/vim-easy-alignjunegunn/vim-easy-align
-let g:user_emmet_leader_key = '<c-e>'
+let g:user_emmet_leader_key = '<C-e>'
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
 
