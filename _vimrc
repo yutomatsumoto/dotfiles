@@ -28,6 +28,11 @@ noremap D "_D
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
 
+"ファイルがC＃の時はタブ文字を使用する
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.cs setlocal noexpandtab
+augroup END
 if has('persistent_undo')
     set undofile
       set undodir=./.vimundo,~/.vim/undo
@@ -89,8 +94,21 @@ NeoBundle 'ujihisa/neco-look'
 NeoBundleLazy 'OrangeT/vim-csharp', { 'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] } }
 call neobundle#end()
 
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+" Dictionary
+let $VIMHOME = $HOME . '/.vim'
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'unity' : $VIMHOME.'/dict/unity.dict'
+    \ }
+
+"syntasticの設定
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "ctagsの設定
@@ -303,6 +321,7 @@ nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
 nnoremap sq :<C-u>q<CR>
+nnoremap sw :<C-u>w<CR>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap st :<C-u>tabnew<CR>
