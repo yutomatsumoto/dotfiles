@@ -37,3 +37,60 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'OrangeT/vim-csharp'
 
+[[plugins]]
+repo =  'tpope/vim-endwise'
+
+[[plugins]]
+#emmet
+repo =  'mattn/emmet-vim'
+
+[[plugins]]
+# コードを自動で閉じてくれる
+repo =  'Townk/vim-autoclose'
+
+[[plugins]]
+# vimのインデントに色をつける
+repo =  'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+# vimのコピペがオートインデントされるのを修正
+repo =  'ConradIrwin/vim-bracketed-paste'
+
+# vimのインデントに色をつける
+[[plugins]]
+repo =  'nathanaelkane/vim-indent-guides'
+
+# vimのコピペがオートインデントされるのを修正
+[[plugins]]
+repo =  'ConradIrwin/vim-bracketed-paste'
+
+# ファイラー
+[[plugins]]
+repo =  'Shougo/vimfiler'
+
+# コメントON/OFFを手軽に実行
+[[plugins]]
+repo =  'tomtom/tcomment_vim'
+
+# 下にあるバーを修飾
+[[plugins]]
+repo =  'itchyny/lightline.vim'
+
+# PHPをPCRで自動整形
+[[plugins]]
+repo =  'stephpy/vim-php-cs-fixer'
+
+# ctagsのタグファイル生成をファイル保存時に自動実行できる
+[[plugins]]
+repo =  'soramugi/auto-ctags.vim'
+
+# シンタックスチェック
+[[plugins]]
+repo =  'scrooloose/syntastic.git'
+
+[[plugins]]
+repo =  'jceb/vim-hier'
+
+# 高速grep
+[[plugins]]
+repo =  'rking/ag.vim'
