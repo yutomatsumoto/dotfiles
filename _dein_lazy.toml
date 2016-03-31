@@ -41,7 +41,7 @@ repo = 'OrangeT/vim-csharp'
 repo =  'tpope/vim-endwise'
 
 [[plugins]]
-#emmet
+# emmet
 repo =  'mattn/emmet-vim'
 
 [[plugins]]
@@ -63,10 +63,6 @@ repo =  'nathanaelkane/vim-indent-guides'
 # vimのコピペがオートインデントされるのを修正
 [[plugins]]
 repo =  'ConradIrwin/vim-bracketed-paste'
-
-# ファイラー
-[[plugins]]
-repo =  'Shougo/vimfiler'
 
 # コメントON/OFFを手軽に実行
 [[plugins]]
@@ -94,3 +90,8 @@ repo =  'jceb/vim-hier'
 # 高速grep
 [[plugins]]
 repo =  'rking/ag.vim'
+
+# ファイラー
+[[plugins]]
+repo =  'Shougo/vimfiler'
+

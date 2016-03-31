@@ -32,6 +32,17 @@ noremap D "_D
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
 
+"ヤンクの設定
+function! ClipboardYank()
+  call system('pbcopy', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('pbpaste')
+endfunction
+vnoremap <silent> y y:call ClipboardYank()<cr>
+noremap <silent> yy yy:call ClipboardYank()<cr>
+nnoremap <silent> p :call ClipboardPaste()<cr>p
+
 "タブやウインドウ分割の設定
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
