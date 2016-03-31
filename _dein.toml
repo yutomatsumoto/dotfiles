@@ -1,10 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-# c#の補完
-repo = 'OrangeT/vim-csharp'
-
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -16,40 +12,6 @@ repo = 'Shougo/vimproc.vim'
     linux   = 'make'
     unix    = 'gmake'
 
+# カラーテーマ
 [[plugins]]
-# 自動補完機能系
-repo =  'Shougo/neocomplete'
-repo =  'Shougo/neosnippet'
-repo =  'Shougo/neosnippet-snippets'
-# # 英単語補完neocompleteに依存
-repo =  'ujihisa/neco-look'
-# # コードを自動で閉じてくれる
-repo =  'Townk/vim-autoclose'
-repo =  'tpope/vim-endwise'
-#
-# # 機能統合系
-repo   = 'Shougo/unite.vim'
-# # # カラーテーマ
-repo =  'tomasr/molokai'
-# # #emmet
-repo =  'mattn/emmet-vim'
-# # # vimのインデントに色をつける
-repo =  'nathanaelkane/vim-indent-guides'
-# # # vimのコピペがオートインデントされるのを修正
-repo =  'ConradIrwin/vim-bracketed-paste'
-# # # ファイラー
-repo =  'Shougo/vimfiler'
-# # # コメントON/OFFを手軽に実行
-repo =  'tomtom/tcomment_vim'
-# # #下にあるバーを修飾
-repo =  'itchyny/lightline.vim'
-# # #PHPをPCRで自動整形
-repo =  'stephpy/vim-php-cs-fixer'
-# # #ctagsのタグファイル生成をファイル保存時に自動実行できる
-repo =  'soramugi/auto-ctags.vim'
-# # #シンタックスチェック
-repo =  'scrooloose/syntastic.git'
-repo =  'jceb/vim-hier'
-# # 高速grep
-repo =  'rking/ag.vim'
-
+repo = 'tomasr/molokai'
