@@ -16,3 +16,9 @@ repo = 'Shougo/vimproc.vim'
 [[plugins]]
 repo = 'tomasr/molokai'
 
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# 下にあるバーを修飾
+[[plugins]]
+repo =  'itchyny/lightline.vim'

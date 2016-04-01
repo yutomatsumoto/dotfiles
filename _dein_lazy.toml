@@ -19,20 +19,15 @@ on_ft = ['snippet']
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
-if = 'has("lua")'
 on_i = 1
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if = 'has("nvim")'
 on_i = 1
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'OrangeT/vim-csharp'
@@ -52,14 +47,6 @@ repo =  'Townk/vim-autoclose'
 # vimのインデントに色をつける
 repo =  'nathanaelkane/vim-indent-guides'
 
-[[plugins]]
-# vimのコピペがオートインデントされるのを修正
-repo =  'ConradIrwin/vim-bracketed-paste'
-
-# vimのインデントに色をつける
-[[plugins]]
-repo =  'nathanaelkane/vim-indent-guides'
-
 # vimのコピペがオートインデントされるのを修正
 [[plugins]]
 repo =  'ConradIrwin/vim-bracketed-paste'
@@ -67,10 +54,6 @@ repo =  'ConradIrwin/vim-bracketed-paste'
 # コメントON/OFFを手軽に実行
 [[plugins]]
 repo =  'tomtom/tcomment_vim'
-
-# 下にあるバーを修飾
-[[plugins]]
-repo =  'itchyny/lightline.vim'
 
 # PHPをPCRで自動整形
 [[plugins]]
@@ -83,6 +66,7 @@ repo =  'soramugi/auto-ctags.vim'
 # シンタックスチェック
 [[plugins]]
 repo =  'scrooloose/syntastic.git'
+depends = ['vimproc.vim']
 
 [[plugins]]
 repo =  'jceb/vim-hier'
