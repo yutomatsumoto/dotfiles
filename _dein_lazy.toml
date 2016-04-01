@@ -94,4 +94,5 @@ repo =  'rking/ag.vim'
 # ファイラー
 [[plugins]]
 repo =  'Shougo/vimfiler'
+depends = ['vimproc.vim']
 

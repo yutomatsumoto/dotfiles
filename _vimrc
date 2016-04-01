@@ -1,6 +1,7 @@
 """"""""""""""""""""""""""""""
 " 基本設定系
 """"""""""""""""""""""""""""""
+let $LANG = "en"
 set number
 set mouse=a
 set nocompatible
@@ -47,7 +48,7 @@ nnoremap <silent> p :call ClipboardPaste()<cr>p
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap s <Nop>
-nnoremap S :e.<CR>
+nnoremap S :VimFiler -split -simple -winwidth=35 -no-quit <CR>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l

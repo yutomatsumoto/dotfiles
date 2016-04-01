@@ -130,7 +130,7 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 alias ll='ls -la'
-alias vi='vim'
+alias vi='nvim'
 alias docker="docker --tlsverify=false"
 alias rm='rmtrash'
 alias ga='git add -A'
