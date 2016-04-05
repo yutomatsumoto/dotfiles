@@ -116,7 +116,8 @@ if dein#check_install()
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" deoplete有効化
+let g:deoplete#enable_at_startup = 1
 
 " Dictionary
 let $VIMHOME = $HOME . '/.vim'

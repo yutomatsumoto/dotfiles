@@ -6,11 +6,11 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 
   [plugins.build]
-    windows = 'tools\\update-dll-mingw'
-    cygwin  = 'make -f make_cygwin.mak'
-    mac     = 'make -f make_mac.mak'
-    linux   = 'make'
-    unix    = 'gmake'
+  windows = 'tools\\update-dll-mingw'
+  cygwin  = 'make -f make_cygwin.mak'
+  mac     = 'make -f make_mac.mak'
+  linux   = 'make'
+  unix    = 'gmake'
 
 # カラーテーマ
 [[plugins]]
@@ -22,3 +22,4 @@ repo = 'Shougo/neosnippet-snippets'
 # 下にあるバーを修飾
 [[plugins]]
 repo =  'itchyny/lightline.vim'
+
