@@ -4,7 +4,6 @@
 let $LANG = "en"
 set number
 set mouse=a
-set nocompatible
 set expandtab
 set laststatus=2
 set title
@@ -81,10 +80,6 @@ syntax enable
 """"""""""""""""""""""""""""""
 " dein.vim
 """"""""""""""""""""""""""""""
-if &compatible
-  set nocompatible
-endif
-
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -177,14 +172,14 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 
-" ファイルタイプ別のプラグイン/インデントを有効にする
-filetype plugin indent on
-
-
 "emmetの設定junegunn/vim-easy-alignjunegunn/vim-easy-align
 let g:user_emmet_leader_key = '<C-e>'
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=237
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
 
 """"""""""""""""""""""""""""""""""""
 "こっから補完の設定

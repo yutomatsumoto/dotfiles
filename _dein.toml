@@ -4,13 +4,7 @@ repo = 'Shougo/dein.vim'
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-
-  [plugins.build]
-  windows = 'tools\\update-dll-mingw'
-  cygwin  = 'make -f make_cygwin.mak'
-  mac     = 'make -f make_mac.mak'
-  linux   = 'make'
-  unix    = 'gmake'
+build = 'make -f make_mac.mak'
 
 # カラーテーマ
 [[plugins]]
@@ -23,3 +17,9 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo =  'itchyny/lightline.vim'
 
+[[plugins]]
+# emmet
+repo =  'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'

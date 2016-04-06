@@ -19,31 +19,28 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['neomru.vim']
-
-[[plugins]]
-# c#の補完
-repo = 'OrangeT/vim-csharp'
+depends = 'neomru.vim'
 
 [[plugins]]
 # rubyやc/c++やbashのタグを自動で閉じる
 repo =  'tpope/vim-endwise'
 
 [[plugins]]
-# emmet
-repo =  'mattn/emmet-vim'
-
-[[plugins]]
 # コードを自動で閉じてくれる
 repo =  'Townk/vim-autoclose'
 
 [[plugins]]
-# vimのインデントに色をつける
-repo = 'Yggdroot/indentLine'
+# c#の補完
+repo = 'OrangeT/vim-csharp'
 
 # vimのコピペがオートインデントされるのを修正
 [[plugins]]
 repo =  'ConradIrwin/vim-bracketed-paste'
+
+# ファイラー
+[[plugins]]
+repo =  'Shougo/vimfiler'
+depends = ['vimproc.vim']
 
 # コメントON/OFFを手軽に実行
 [[plugins]]
@@ -67,9 +64,4 @@ repo =  'jceb/vim-hier'
 # 高速grep
 [[plugins]]
 repo =  'rking/ag.vim'
-
-# ファイラー
-[[plugins]]
-repo =  'Shougo/vimfiler'
-depends = ['vimproc.vim']
 
