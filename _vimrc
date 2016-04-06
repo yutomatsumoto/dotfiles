@@ -115,15 +115,15 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " Dictionary
-let $VIMHOME = $HOME . '/.vim'
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'unity' : $VIMHOME.'/dict/unity.dict'
-    \ }
+"let $VIMHOME = $HOME . '/.vim'
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'unity' : $VIMHOME.'/dict/unity.dict'
+"    \ }
 
 "syntasticの設定
 set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -378,3 +378,6 @@ endfunction
 
 " カラースキーマの設定
 colorscheme molokai
+
+" phpの辞書の設定
+let g:neocomplete_php_locale = 'ja'

@@ -23,3 +23,15 @@ repo =  'mattn/emmet-vim'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+
+# コメントON/OFFを手軽に実行
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# シンタックスチェック
+[[plugins]]
+repo =  'scrooloose/syntastic.git'
+
+# シンタックスチェックの時にハイライトする
+[[plugins]]
+repo = 'jceb/vim-hier'

@@ -42,10 +42,6 @@ repo =  'ConradIrwin/vim-bracketed-paste'
 repo =  'Shougo/vimfiler'
 depends = ['vimproc.vim']
 
-# コメントON/OFFを手軽に実行
-[[plugins]]
-repo =  'tomtom/tcomment_vim'
-
 # PHPをPCRで自動整形
 [[plugins]]
 repo =  'stephpy/vim-php-cs-fixer'
@@ -54,14 +50,6 @@ repo =  'stephpy/vim-php-cs-fixer'
 [[plugins]]
 repo =  'soramugi/auto-ctags.vim'
 
-# シンタックスチェック
-[[plugins]]
-repo =  'scrooloose/syntastic.git'
-
-[[plugins]]
-repo =  'jceb/vim-hier'
-
 # 高速grep
 [[plugins]]
 repo =  'rking/ag.vim'
-
