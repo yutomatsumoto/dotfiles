@@ -42,10 +42,6 @@ repo =  'ConradIrwin/vim-bracketed-paste'
 repo =  'Shougo/vimfiler'
 depends = ['vimproc.vim']
 
-# PHPをPCRで自動整形
-[[plugins]]
-repo =  'stephpy/vim-php-cs-fixer'
-
 # ctagsのタグファイル生成をファイル保存時に自動実行できる
 [[plugins]]
 repo =  'soramugi/auto-ctags.vim'

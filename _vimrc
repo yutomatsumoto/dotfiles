@@ -159,16 +159,6 @@ let g:unite_enable_start_insert = 1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-"PHPの自動整形
-nnoremap P :call PhpCsFixerFixFile()<CR>
-let g:php_cs_fixer_path = "/usr/local/Cellar/php-cs-fixer/1.10/php-cs-fixer" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "symfony"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"              " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, 
-
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 
