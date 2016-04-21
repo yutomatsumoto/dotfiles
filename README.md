@@ -3,10 +3,13 @@ Vim関連やその他の設定ファイル
 
 ##NeoVim + dein.vim
 
-```
+```bash
  #El Capitan
  $ brew install neovim --HEAD
 
+ #それ以外のMacOSX
+ $ brew install neovim/neovim/neovim
+ 
  #必要なフォルダがないので作成したのちにvimの設定へリンク貼る
  $ mkdir .config/nvim
  $ ln -snfv ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
@@ -22,7 +25,7 @@ Vim関連やその他の設定ファイル
 
 ###TIPS
 
-```
+```bash
  #dein.vimをupdateする
  :call dein#update()
 
@@ -32,7 +35,7 @@ Vim関連やその他の設定ファイル
 
  
 ## Vim + NeoBundle
-```
+```bash
  $ mkdir -p ~/.vim/bundle
  $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
  $ brew install ctags
@@ -40,7 +43,7 @@ Vim関連やその他の設定ファイル
 ```
 
 ###clipboard連携とneocompleteがうまく動かない場合
-```
+```bash
  $ brew update
  $ brew install lua
  $ brew uninstall vim
