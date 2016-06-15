@@ -49,3 +49,4 @@ repo =  'soramugi/auto-ctags.vim'
 # 高速grep
 [[plugins]]
 repo =  'rking/ag.vim'
+

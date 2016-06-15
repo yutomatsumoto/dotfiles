@@ -1,10 +1,11 @@
 """"""""""""""""""""""""""""""
 " 基本設定系
 """"""""""""""""""""""""""""""
-let $LANG = "en"
+" let $LANG = "en"
 set number
 set mouse=a
 set expandtab
+set tabstop=2
 set laststatus=2
 set title
 set autoindent
@@ -40,7 +41,7 @@ function! ClipboardPaste()
   let @@ = system('pbpaste')
 endfunction
 vnoremap <silent> y y:call ClipboardYank()<cr>
-noremap <silent> yy yy:call ClipboardYank()<cr>
+vnoremap <silent> yy yy:call ClipboardYank()<cr>
 nnoremap <silent> p :call ClipboardPaste()<cr>p
 
 "タブやウインドウ分割の設定
@@ -73,6 +74,12 @@ if has('persistent_undo')
     set undofile
       set undodir=./.vimundo,~/.vim/undo
     endif
+
+
+augroup fileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.volt setlocal filetype=html
+augroup END
 
 syntax enable
 
@@ -130,6 +137,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_html_checkers = []
 
 "ctagsの設定
 let g:auto_ctags = 1
@@ -366,8 +374,8 @@ function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-" カラースキーマの設定
-colorscheme molokai
-
 " phpの辞書の設定
 let g:neocomplete_php_locale = 'ja'
+
+" カラースキーマの設定
+colorscheme molokai
