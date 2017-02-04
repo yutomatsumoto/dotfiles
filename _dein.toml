@@ -35,3 +35,6 @@ repo =  'scrooloose/syntastic.git'
 [[plugins]]
 repo = 'digitaltoad/vim-pug'
 
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+
