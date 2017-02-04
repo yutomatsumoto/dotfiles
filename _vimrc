@@ -136,13 +136,6 @@ endif
 " deoplete有効化
 let g:deoplete#enable_at_startup = 1
 
-" Dictionary
-"let $VIMHOME = $HOME . '/.vim'
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"    \ 'default' : '',
-"    \ 'unity' : $VIMHOME.'/dict/unity.dict'
-"    \ }
-
 "syntasticの設定
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -389,9 +382,6 @@ endfunction
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
-
-" phpの辞書の設定
-let g:neocomplete_php_locale = 'ja'
 
 " カラースキーマの設定
 colorscheme molokai
