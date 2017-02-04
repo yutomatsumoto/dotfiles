@@ -81,6 +81,21 @@ augroup fileType
     autocmd BufNewFile,BufRead *.volt setlocal filetype=html
 augroup END
 
+augroup fileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+augroup END
+
+augroup fileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.scss setlocal filetype=css
+augroup END
+
+augroup fileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.jade setlocal filetype=pug
+augroup END
+
 syntax enable
 
 
@@ -138,6 +153,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = []
+let g:syntastic_css_checkers = []
 
 "ctagsの設定
 let g:auto_ctags = 1

@@ -32,3 +32,6 @@ repo = 'tomtom/tcomment_vim'
 [[plugins]]
 repo =  'scrooloose/syntastic.git'
 
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+

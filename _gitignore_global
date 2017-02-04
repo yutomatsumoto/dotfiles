@@ -13,4 +13,10 @@ Obj
 *.userprefs
 *.swp
 *.csproj
+.idea/
 
+#SBT
+target/
+lib_managed/
+src_managed/
+boot/
