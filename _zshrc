@@ -193,4 +193,4 @@ else
     alias ls='ls --color=auto'
 fi
 # vim:set ft=zsh:
-source ~/.zsh/git-flow-completion/git-flow-completion.zsh
+# source ~/.zsh/git-flow-completion/git-flow-completion.zsh
