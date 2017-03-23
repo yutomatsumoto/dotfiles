@@ -27,22 +27,22 @@ set ignorecase
 set hlsearch
 
 "削除でヤンクしない
-noremap  x "_x
-nnoremap d "_d
-noremap D "_D
-noremap <C-j> <C-d>
-noremap <C-k> <C-u>
+"noremap  x "_x
+"nnoremap d "_d
+"noremap D "_D
+"noremap <C-j> <C-d>
+"noremap <C-k> <C-u>
 
 "ヤンクの設定
-function! ClipboardYank()
-  call system('pbcopy', @@)
-endfunction
-function! ClipboardPaste()
-  let @@ = system('pbpaste')
-endfunction
-vnoremap <silent> y y:call ClipboardYank()<cr>
-vnoremap <silent> yy yy:call ClipboardYank()<cr>
-nnoremap <silent> p :call ClipboardPaste()<cr>p
+"function! ClipboardYank()
+"  call system('pbcopy', @@)
+"endfunction
+"function! ClipboardPaste()
+"  let @@ = system('pbpaste')
+"endfunction
+"vnoremap <silent> y y:call ClipboardYank()<cr>
+"vnoremap <silent> yy yy:call ClipboardYank()<cr>
+"nnoremap <silent> p :call ClipboardPaste()<cr>p
 
 "タブやウインドウ分割の設定
 nnoremap ss :<C-u>sp<CR>
