@@ -133,12 +133,11 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 alias cp='cp -i'
 alias mv='mv -i'
-
 alias mkdir='mkdir -p'
 alias ll='ls -la'
 alias vi='nvim'
 alias vim='nvim'
-alias docker="docker --tlsverify=false"
+#alias docker="docker --tlsverify=false"
 alias rm='rmtrash'
 alias ga='git add -A'
 alias gc='git commit -a'
@@ -148,6 +147,7 @@ alias gs='git status'
 alias gpo='git pull origin'
 alias gps='git push origin'
 alias cds='cd ~/Documents/SpiceMart/vagrant/html/'
+alias tmux="TERM=screen-256color-bce tmux"
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
