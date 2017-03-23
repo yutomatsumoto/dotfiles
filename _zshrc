@@ -3,6 +3,20 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/Users/mazinai_tarazu/Documents/play-framework/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
 
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias ll='ls -la'
+alias vi='nvim'
+alias ga='git add -A'
+alias gc='git commit -a'
+alias gs='git status'
+alias tmux="TERM=screen-256color-bce tmux"
+
+###########################################
+autoload -U promptinit; promptinit
+prompt pure
+
 autoload -Uz colors
 colors
 
@@ -11,9 +25,6 @@ bindkey -e
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-
-PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
-%# "
 
 autoload -Uz compinit
 compinit
@@ -39,18 +50,6 @@ setopt extended_glob
 
 bindkey '^R' history-incremental-pattern-search-backward
 
-########################################
-alias cp='cp -i'
-alias mv='mv -i'
-alias mkdir='mkdir -p'
-alias ll='ls -la'
-alias vim='nvim'
-alias ga='git add -A'
-alias gc='git commit -a'
-alias gs='git status'
-alias tmux="TERM=screen-256color-bce tmux"
-
-# mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
     # Mac
     alias -g C='| pbcopy'
@@ -62,3 +61,21 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+###########################################
+source ~/.zplug/init.zsh
+
+zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-completions'
+zplug 'zsh-users/zsh-syntax-highlighting'
+zplug 'mollifier/anyframe'
+zplug 'mafredri/zsh-async', from:github
+zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
