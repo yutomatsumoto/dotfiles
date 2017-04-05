@@ -25,6 +25,7 @@ set noswapfile
 set wrapscan
 set ignorecase
 set hlsearch
+set rtp+=~/.fzf
 
 "削除でヤンクしない
 "noremap  x "_x
@@ -41,6 +42,7 @@ set hlsearch
 "  let @@ = system('pbpaste')
 "endfunction
 "vnoremap <silent> y y:call ClipboardYank()<cr>
+"vnoremap <silent> x x:call ClipboardYank()<cr>
 "vnoremap <silent> yy yy:call ClipboardYank()<cr>
 "nnoremap <silent> p :call ClipboardPaste()<cr>p
 

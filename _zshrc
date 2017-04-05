@@ -13,7 +13,13 @@ alias gc='git commit -a'
 alias gs='git status'
 alias tmux="TERM=screen-256color-bce tmux"
 
+bindkey '^xj' anyframe-widget-cdr
+bindkey '^xk' anyframe-widget-execute-history
+bindkey '^xl' anyframe-widget-cd-ghq-repository
+
 ###########################################
+zstyle ":anyframe:selector:" use fzf
+
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -21,6 +27,9 @@ autoload -Uz colors
 colors
 
 bindkey -e
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
